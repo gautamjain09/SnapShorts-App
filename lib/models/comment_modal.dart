@@ -7,7 +7,7 @@ class Comment {
   List likes;
   String profilePhoto;
   String uid;
-  String videoId;
+  String commentId;
 
   Comment({
     required this.username,
@@ -16,7 +16,7 @@ class Comment {
     required this.likes,
     required this.profilePhoto,
     required this.uid,
-    required this.videoId,
+    required this.commentId,
   });
 
   Map<String, dynamic> toJson() => {
@@ -26,7 +26,7 @@ class Comment {
         'likes': likes,
         'profilePhoto': profilePhoto,
         'uid': uid,
-        'videoId': videoId,
+        'commentId': commentId,
       };
 
   static Comment fromSnap(DocumentSnapshot snap) {
@@ -38,7 +38,7 @@ class Comment {
       likes: snapshot['likes'],
       profilePhoto: snapshot['profilePhoto'],
       uid: snapshot['uid'],
-      videoId: snapshot['videoId'],
+      commentId: snapshot['commentId'],
     );
   }
 }

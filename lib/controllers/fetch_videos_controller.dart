@@ -16,13 +16,16 @@ class FetchVideosController extends GetxController {
   void onInit() {
     super.onInit();
     _videosList.bindStream(
-        firestore.collection("videos").snapshots().map((QuerySnapshot query) {
-      List<Video> allVideos = [];
-      for (var child in query.docs) {
-        allVideos.add(Video.fromSnap(child));
-      }
-      return allVideos;
-    }));
+      firestore.collection("videos").snapshots().map(
+        (QuerySnapshot query) {
+          List<Video> allVideos = [];
+          for (DocumentSnapshot child in query.docs) {
+            allVideos.add(Video.fromSnap(child));
+          }
+          return allVideos;
+        },
+      ),
+    );
   }
 
   likeVideo(String videoiId) async {

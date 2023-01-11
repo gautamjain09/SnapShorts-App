@@ -141,8 +141,8 @@ class _VideoScreenState extends State<VideoScreen> {
                                         onTap: () => Navigator.of(context).push(
                                           MaterialPageRoute(
                                             builder: (context) => CommentScreen(
-                                                // id: data.videoId,
-                                                ),
+                                              videoId: data.videoId,
+                                            ),
                                           ),
                                         ),
                                         child: const Icon(
