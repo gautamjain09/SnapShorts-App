@@ -55,7 +55,7 @@ class CommentScreen extends StatelessWidget {
                             title: Row(
                               children: [
                                 Text(
-                                  commentData.username,
+                                  commentData.username + "  ",
                                   style: const TextStyle(
                                     fontSize: 18,
                                     color: buttonColor,
@@ -79,7 +79,8 @@ class CommentScreen extends StatelessWidget {
                             subtitle: Row(
                               children: [
                                 Text(
-                                  timeago.format(commentData.datePublished),
+                                  timeago.format(
+                                      commentData.datePublished.toDate()),
                                   style: const TextStyle(
                                     fontSize: 14,
                                     color: textColor,
@@ -89,7 +90,8 @@ class CommentScreen extends StatelessWidget {
                                   width: 9,
                                 ),
                                 Text(
-                                  "Likes Functionality",
+                                  commentData.likes.length.toString() +
+                                      " Likes",
                                   style: const TextStyle(
                                     fontSize: 14,
                                     color: textColor,
@@ -99,14 +101,16 @@ class CommentScreen extends StatelessWidget {
                             ),
                             trailing: InkWell(
                               onTap: () {
-                                // commentController.likeComment(comment.id);
+                                commentController
+                                    .likeComment(commentData.commentId);
                               },
                               child: Icon(
                                 Icons.favorite,
                                 size: 20,
-                                // color: comment.likes.contains(authController.user.uid)
-                                //     ? Colors.red
-                                //     : Colors.white,
+                                color: commentData.likes
+                                        .contains(authController.user.uid)
+                                    ? Colors.red
+                                    : Colors.white,
                               ),
                             ),
                           );

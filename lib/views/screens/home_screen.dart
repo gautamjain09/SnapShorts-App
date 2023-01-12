@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:snapshorts_app/constants.dart';
 import 'package:snapshorts_app/views/screens/add_video_screen.dart';
+import 'package:snapshorts_app/views/screens/search_screen.dart';
 import 'package:snapshorts_app/views/screens/video_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,12 +13,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int pageIdx = 0;
-  final pages = const [
-    VideoScreen(),
-    Text("Search Screen"),
-    AddVideoScreen(),
-    Text("Message Screen"),
-    Text("Profile Screen"),
+  final pages = [
+    const VideoScreen(),
+    SearchScreen(),
+    const AddVideoScreen(),
+    const Text("Profile Screen"),
   ];
 
   @override

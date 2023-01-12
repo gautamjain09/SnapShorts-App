@@ -14,6 +14,7 @@ class CommentController extends GetxController {
   String _videoId = "";
   updateVideoId(String videoId) {
     _videoId = videoId;
+    getComments();
   }
 
   postComment(String commentText) async {
@@ -83,5 +84,35 @@ class CommentController extends GetxController {
         },
       ),
     );
+  }
+
+  likeComment(String commentId) async {
+    var uid = authController.user.uid;
+    DocumentSnapshot commentDoc = await firestore
+        .collection("videos")
+        .doc(_videoId)
+        .collection("comments")
+        .doc(commentId)
+        .get();
+
+    if ((commentDoc.data()! as dynamic)['likes'].contains(uid)) {
+      await firestore
+          .collection("videos")
+          .doc(_videoId)
+          .collection("comments")
+          .doc(commentId)
+          .update({
+        'likes': FieldValue.arrayRemove([uid])
+      });
+    } else {
+      await firestore
+          .collection("videos")
+          .doc(_videoId)
+          .collection("comments")
+          .doc(commentId)
+          .update({
+        'likes': FieldValue.arrayUnion([uid])
+      });
+    }
   }
 }
