@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:snapshorts_app/constants.dart';
 import 'package:snapshorts_app/views/screens/add_video_screen.dart';
+import 'package:snapshorts_app/views/screens/profile_screen.dart';
 import 'package:snapshorts_app/views/screens/search_screen.dart';
 import 'package:snapshorts_app/views/screens/video_screen.dart';
 
@@ -17,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const VideoScreen(),
     SearchScreen(),
     const AddVideoScreen(),
-    const Text("Profile Screen"),
+    ProfileScreen(uid: authController.user.uid),
   ];
 
   @override
@@ -35,15 +36,15 @@ class _HomeScreenState extends State<HomeScreen> {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: buttonColor,
         unselectedItemColor: Colors.white70,
-        items: [
-          const BottomNavigationBarItem(
+        items: const [
+          BottomNavigationBarItem(
             label: "Home",
             icon: Icon(
               Icons.home,
               size: 28,
             ),
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             label: "Search",
             icon: Icon(
               Icons.search,
@@ -51,27 +52,13 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           BottomNavigationBarItem(
-            label: "",
-            icon: Column(
-              children: const [
-                SizedBox(
-                  height: 15,
-                ),
-                Icon(
-                  Icons.add_box,
-                  size: 36,
-                ),
-              ],
-            ),
-          ),
-          const BottomNavigationBarItem(
-            label: "Message",
+            label: "Add Video",
             icon: Icon(
-              Icons.message,
+              Icons.add_box,
               size: 28,
             ),
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             label: "Profile",
             icon: Icon(
               Icons.account_circle_sharp,

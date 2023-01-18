@@ -98,7 +98,7 @@ class _VideoScreenState extends State<VideoScreen> {
                             Container(
                               width: 100,
                               margin: EdgeInsets.only(
-                                top: MediaQuery.of(context).size.height / 4,
+                                top: MediaQuery.of(context).size.height / 3,
                                 left: 10,
                               ),
                               child: Column(
@@ -161,26 +161,26 @@ class _VideoScreenState extends State<VideoScreen> {
                                       )
                                     ],
                                   ),
-                                  Column(
-                                    children: [
-                                      InkWell(
-                                        onTap: () {},
-                                        child: const Icon(
-                                          Icons.reply,
-                                          size: 36,
-                                          color: Colors.white70,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 4),
-                                      Text(
-                                        data.shareCount.toString(),
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white70,
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                  // Column(
+                                  //   children: [
+                                  //     InkWell(
+                                  //       onTap: () {},
+                                  //       child: const Icon(
+                                  //         Icons.reply,
+                                  //         size: 36,
+                                  //         color: Colors.white70,
+                                  //       ),
+                                  //     ),
+                                  //     const SizedBox(height: 4),
+                                  //     Text(
+                                  //       data.shareCount.toString(),
+                                  //       style: const TextStyle(
+                                  //         fontSize: 18,
+                                  //         color: Colors.white70,
+                                  //       ),
+                                  //     )
+                                  //   ],
+                                  // ),
                                   CustomCircleAnimation(
                                     child: CustomMusicAlbumViewer(
                                       profilePhoto: data.profilePhoto,

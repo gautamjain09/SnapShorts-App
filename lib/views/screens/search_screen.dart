@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import 'package:get/get.dart';
 import 'package:snapshorts_app/constants.dart';
 import 'package:snapshorts_app/controllers/search_controller.dart';
+import 'package:snapshorts_app/views/screens/profile_screen.dart';
 
 class SearchScreen extends StatelessWidget {
   SearchScreen({Key? key}) : super(key: key);
@@ -55,9 +56,9 @@ class SearchScreen extends StatelessWidget {
                     child: Text(
                       'Search for users!',
                       style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                        color: buttonColor,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                   )
@@ -66,7 +67,13 @@ class SearchScreen extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final userData = searchController.searchedUsers[index];
                       return InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) {
+                              return ProfileScreen(uid: userData.uid);
+                            }),
+                          );
+                        },
                         child: ListTile(
                           leading: CircleAvatar(
                             backgroundImage: NetworkImage(
