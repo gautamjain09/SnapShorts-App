@@ -101,8 +101,7 @@ class UploadVideoController extends GetxController {
       );
 
       Get.to(
-        // Navigator to Video Screen
-        const AddVideoScreen(),
+        () => AddVideoScreen(),
       );
     } on FirebaseException catch (e) {
       Get.snackbar(

@@ -3,12 +3,10 @@ import 'package:get/get.dart';
 import 'package:snapshorts_app/constants.dart';
 
 class ProfileController extends GetxController {
-  // private
-  Rx<String> _uid = "".obs;
   final Rx<Map<String, dynamic>> _user = Rx<Map<String, dynamic>>({});
-
-  // getter
   Map<String, dynamic> get user => _user.value;
+
+  Rx<String> _uid = "".obs;
 
   updateUserId(String uid) async {
     _uid.value = uid;
@@ -21,10 +19,10 @@ class ProfileController extends GetxController {
         .where("uid", isEqualTo: _uid.value)
         .get();
 
-    List<String> videoThumbnails = [];
+    List<String> thumbnailUrls = [];
     int len = myVideos.docs.length;
     for (int i = 0; i < len; i++) {
-      videoThumbnails.add((myVideos.docs[i].data()! as dynamic)['thumbnail']);
+      thumbnailUrls.add((myVideos.docs[i].data()! as dynamic)['thumbnailUrl']);
     }
 
     DocumentSnapshot userDoc =
@@ -42,7 +40,7 @@ class ProfileController extends GetxController {
       'username': username,
       'profilePhoto': profilePhoto,
       'likes': likes.toString(),
-      'videoThumbnails': videoThumbnails,
+      'thumbnailUrls': thumbnailUrls,
     };
   }
 }
