@@ -27,6 +27,7 @@ class _VideoScreenState extends State<VideoScreen> {
       body: Obx(
         () {
           return PageView.builder(
+            // reverse: true,
             itemCount: fetchVideoController.videosList.length,
             controller: PageController(initialPage: 0, viewportFraction: 1),
             scrollDirection: Axis.vertical,

@@ -31,7 +31,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       if (profileController.user.isEmpty) {
         return const Center(child: CircularProgressIndicator());
       }
-
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.black12,
@@ -92,7 +91,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ],
                       ),
                       const SizedBox(
-                        height: 15,
+                        height: 10,
                       ),
                       Column(
                         children: [
@@ -104,7 +103,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               color: textColor,
                             ),
                           ),
-                          const SizedBox(height: 5),
                           const Text(
                             'Likes',
                             style: TextStyle(
@@ -116,7 +114,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ],
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 5,
                       ),
                       Container(
                         width: 140,
@@ -142,12 +140,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                       ),
+                      const SizedBox(
+                        height: 5,
+                      ),
                       GridView.builder(
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
+                          crossAxisCount: 3,
                           childAspectRatio: 1,
                           crossAxisSpacing: 5,
+                          mainAxisSpacing: 5,
                         ),
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),

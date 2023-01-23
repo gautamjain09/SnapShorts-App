@@ -4,10 +4,7 @@ import 'package:snapshorts_app/constants.dart';
 import 'package:snapshorts_app/models/user_model.dart';
 
 class SearchController extends GetxController {
-  // private
   final Rx<List<User>> _searchedUsers = Rx<List<User>>([]);
-
-  // getter
   List<User> get searchedUsers => _searchedUsers.value;
 
   searchUser(String text) async {

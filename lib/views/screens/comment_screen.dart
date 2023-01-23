@@ -18,146 +18,145 @@ class CommentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     commentController.updateVideoId(videoId);
 
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: Column(
-              children: [
-                const SizedBox(height: 10),
-                const Text(
-                  "Comment  Section",
-                  style: TextStyle(
-                    fontSize: 26,
-                    color: textColor,
-                    fontWeight: FontWeight.w400,
-                  ),
+    return Scaffold(
+      body: SafeArea(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            children: [
+              const SizedBox(height: 10),
+              const Text(
+                "Comment  Section",
+                style: TextStyle(
+                  fontSize: 26,
+                  color: textColor,
+                  fontWeight: FontWeight.w400,
                 ),
-                const Divider(color: buttonColor),
-                Expanded(
-                  child: Obx(
-                    () {
-                      return ListView.builder(
-                        itemCount: commentController.commentsList.length,
-                        itemBuilder: ((context, index) {
-                          final commentData =
-                              commentController.commentsList[index];
-                          return ListTile(
-                            leading: CircleAvatar(
-                              backgroundColor: Colors.black,
-                              backgroundImage: NetworkImage(
-                                commentData.profilePhoto,
-                              ),
+              ),
+              const Divider(color: buttonColor),
+              Expanded(
+                child: Obx(
+                  () {
+                    return ListView.builder(
+                      itemCount: commentController.commentsList.length,
+                      itemBuilder: ((context, index) {
+                        final commentData =
+                            commentController.commentsList[index];
+                        return ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.black,
+                            backgroundImage: NetworkImage(
+                              commentData.profilePhoto,
                             ),
-                            title: Row(
-                              children: [
-                                Text(
-                                  commentData.username + "  ",
+                          ),
+                          title: Row(
+                            children: [
+                              Text(
+                                commentData.username + " ",
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  color: buttonColor,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Text(
+                                  commentData.commentText,
+                                  maxLines: 5,
                                   style: const TextStyle(
                                     fontSize: 18,
-                                    color: buttonColor,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Text(
-                                    commentData.commentText,
-                                    maxLines: 5,
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                      color: textColor,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            subtitle: Row(
-                              children: [
-                                Text(
-                                  timeago.format(
-                                      commentData.datePublished.toDate()),
-                                  style: const TextStyle(
-                                    fontSize: 14,
                                     color: textColor,
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                const SizedBox(
-                                  width: 9,
-                                ),
-                                Text(
-                                  commentData.likes.length.toString() +
-                                      " Likes",
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    color: textColor,
-                                  ),
-                                )
-                              ],
-                            ),
-                            trailing: InkWell(
-                              onTap: () {
-                                commentController
-                                    .likeComment(commentData.commentId);
-                              },
-                              child: Icon(
-                                Icons.favorite,
-                                size: 20,
-                                color: commentData.likes
-                                        .contains(authController.user.uid)
-                                    ? Colors.red
-                                    : Colors.white,
                               ),
+                            ],
+                          ),
+                          subtitle: Row(
+                            children: [
+                              Text(
+                                timeago
+                                    .format(commentData.datePublished.toDate()),
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: textColor,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 9,
+                              ),
+                              Text(
+                                commentData.likes.length.toString() + " Likes",
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: textColor,
+                                ),
+                              )
+                            ],
+                          ),
+                          trailing: InkWell(
+                            onTap: () {
+                              commentController
+                                  .likeComment(commentData.commentId);
+                            },
+                            child: Icon(
+                              Icons.favorite,
+                              size: 20,
+                              color: commentData.likes
+                                      .contains(authController.user.uid)
+                                  ? Colors.red
+                                  : Colors.white,
                             ),
-                          );
-                        }),
-                      );
-                    },
-                  ),
+                          ),
+                        );
+                      }),
+                    );
+                  },
                 ),
-                const Divider(color: buttonColor),
-                ListTile(
-                  title: TextFormField(
-                    controller: textController,
-                    style: const TextStyle(
+              ),
+              const Divider(color: buttonColor),
+              ListTile(
+                title: TextFormField(
+                  controller: textController,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: textColor,
+                  ),
+                  decoration: const InputDecoration(
+                    labelText: 'Comment Here',
+                    labelStyle: TextStyle(
                       fontSize: 18,
                       color: textColor,
+                      fontWeight: FontWeight.w500,
                     ),
-                    decoration: const InputDecoration(
-                      labelText: 'Comment Here',
-                      labelStyle: TextStyle(
-                        fontSize: 18,
-                        color: textColor,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: buttonColor,
-                        ),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: buttonColor,
-                        ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: buttonColor,
                       ),
                     ),
-                  ),
-                  trailing: TextButton(
-                    onPressed: () {
-                      commentController.postComment(textController.text);
-                    },
-                    child: const Icon(
-                      Icons.send_sharp,
-                      size: 26,
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: buttonColor,
+                      ),
                     ),
                   ),
                 ),
-              ],
-            ),
+                trailing: TextButton(
+                  onPressed: () {
+                    commentController.postComment(textController.text);
+                  },
+                  child: const Icon(
+                    Icons.send_sharp,
+                    size: 26,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+            ],
           ),
         ),
       ),

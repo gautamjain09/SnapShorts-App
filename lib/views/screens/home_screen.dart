@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:snapshorts_app/constants.dart';
-import 'package:snapshorts_app/views/screens/add_video_screen.dart';
+import 'package:snapshorts_app/views/screens/upload_video_screen.dart';
 import 'package:snapshorts_app/views/screens/profile_screen.dart';
 import 'package:snapshorts_app/views/screens/search_screen.dart';
 import 'package:snapshorts_app/views/screens/video_screen.dart';
@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final pages = [
     const VideoScreen(),
     SearchScreen(),
-    const AddVideoScreen(),
+    const UploadVideoScreen(),
     ProfileScreen(uid: authController.user.uid),
   ];
 

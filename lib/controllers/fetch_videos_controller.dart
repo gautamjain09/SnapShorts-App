@@ -6,10 +6,7 @@ import 'package:snapshorts_app/models/video_model.dart';
 class FetchVideosController extends GetxController {
   var uid = authController.user.uid;
 
-  // private member
   final Rx<List<Video>> _videosList = Rx<List<Video>>([]);
-
-  // Getter for videoList -> public member
   List<Video> get videosList => _videosList.value;
 
   @override

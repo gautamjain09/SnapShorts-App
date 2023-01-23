@@ -30,7 +30,6 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: backgroundColor,
       ),
       home: const LoginScreen(),
-      // home: const SplashScreen(),
     );
   }
 }

@@ -87,8 +87,12 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  InkWell(
-                    onTap: () {
+                  ElevatedButton(
+                    onPressed: () {
+                      Get.snackbar(
+                        "Please wait",
+                        "Wait a while video is Processing",
+                      );
                       uploadVideoController.uploadVideo(
                         _songController.text,
                         _captionController.text,

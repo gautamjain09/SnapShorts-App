@@ -5,23 +5,21 @@ import 'package:image_picker/image_picker.dart';
 import 'package:snapshorts_app/constants.dart';
 import 'package:snapshorts_app/views/screens/confirm_screen.dart';
 
-class AddVideoScreen extends StatefulWidget {
-  const AddVideoScreen({Key? key}) : super(key: key);
+class UploadVideoScreen extends StatefulWidget {
+  const UploadVideoScreen({Key? key}) : super(key: key);
 
   @override
-  State<AddVideoScreen> createState() => _AddVideoScreenState();
+  State<UploadVideoScreen> createState() => _UploadVideoScreenState();
 }
 
-class _AddVideoScreenState extends State<AddVideoScreen> {
+class _UploadVideoScreenState extends State<UploadVideoScreen> {
   videoPicker(ImageSource src, BuildContext context) async {
     final video = await ImagePicker().pickVideo(source: src);
     if (video != null) {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => ConfirmScreen(
-            videoFile: File(video.path),
-            videoPath: video.path,
-          ),
+      Get.offAll(
+        () => ConfirmScreen(
+          videoFile: File(video.path),
+          videoPath: video.path,
         ),
       );
     }

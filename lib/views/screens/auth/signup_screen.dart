@@ -28,12 +28,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const SizedBox(height: 50),
               const Text(
                 "SnapShorts App",
                 style: TextStyle(
                   color: textColor,
                   fontWeight: FontWeight.w500,
-                  fontSize: 30,
+                  fontSize: 28,
                 ),
               ),
               const SizedBox(height: 30),

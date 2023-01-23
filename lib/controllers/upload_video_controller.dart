@@ -4,7 +4,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:snapshorts_app/constants.dart';
 import 'package:snapshorts_app/models/video_model.dart';
-import 'package:snapshorts_app/views/screens/add_video_screen.dart';
+import 'package:snapshorts_app/views/screens/upload_video_screen.dart';
+import 'package:snapshorts_app/views/screens/video_screen.dart';
 import 'package:video_compress/video_compress.dart';
 
 class UploadVideoController extends GetxController {
@@ -93,15 +94,16 @@ class UploadVideoController extends GetxController {
       await firestore
           .collection("videos")
           .doc("Video $len")
-          .set(video.toJson());
+          .set(video.toJson())
+          .then((value) {
+        Get.snackbar(
+          "Uploaded",
+          "Video Uploaded Successfully",
+        );
+      });
 
-      Get.snackbar(
-        "Uploaded",
-        "Video Uploaded Successfully",
-      );
-
-      Get.to(
-        () => AddVideoScreen(),
+      Get.off(
+        () => const VideoScreen(),
       );
     } on FirebaseException catch (e) {
       Get.snackbar(
