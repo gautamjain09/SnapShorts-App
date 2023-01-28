@@ -18,23 +18,34 @@ class CommentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     commentController.updateVideoId(videoId);
 
-    return Scaffold(
-      body: SafeArea(
-        child: SizedBox(
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            "Comment Screen",
+            style: TextStyle(
+              fontSize: 18,
+              color: textColor,
+            ),
+          ),
+          centerTitle: true,
+          backgroundColor: buttonColor,
+        ),
+        body: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              const SizedBox(height: 10),
-              const Text(
-                "Comment  Section",
-                style: TextStyle(
-                  fontSize: 26,
-                  color: textColor,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              const Divider(color: buttonColor),
+              // const SizedBox(height: 10),
+              // const Text(
+              //   "Comment Section",
+              //   style: TextStyle(
+              //     fontSize: 26,
+              //     color: textColor,
+              //     fontWeight: FontWeight.w400,
+              //   ),
+              // ),
+              // Divider(color: buttonColor),
               Expanded(
                 child: Obx(
                   () {
@@ -116,7 +127,7 @@ class CommentScreen extends StatelessWidget {
                   },
                 ),
               ),
-              const Divider(color: buttonColor),
+              Divider(color: buttonColor),
               ListTile(
                 title: TextFormField(
                   controller: textController,
@@ -124,28 +135,33 @@ class CommentScreen extends StatelessWidget {
                     fontSize: 18,
                     color: textColor,
                   ),
-                  decoration: const InputDecoration(
-                    labelText: 'Comment Here',
-                    labelStyle: TextStyle(
-                      fontSize: 18,
+                  decoration: InputDecoration(
+                    labelText: 'Type here',
+                    labelStyle: const TextStyle(
+                      fontSize: 16,
                       color: textColor,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w400,
                     ),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: buttonColor,
+                        color: buttonColor!,
                       ),
                     ),
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: buttonColor,
+                        color: buttonColor!,
                       ),
                     ),
                   ),
+                  onFieldSubmitted: ((value) {
+                    commentController.postComment(textController.text);
+                    textController.clear();
+                  }),
                 ),
                 trailing: TextButton(
                   onPressed: () {
                     commentController.postComment(textController.text);
+                    textController.clear();
                   },
                   child: const Icon(
                     Icons.send_sharp,
@@ -153,7 +169,7 @@ class CommentScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
             ],

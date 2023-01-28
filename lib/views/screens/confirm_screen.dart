@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import 'package:get/get.dart';
 import 'package:snapshorts_app/constants.dart';
 import 'package:snapshorts_app/controllers/upload_video_controller.dart';
+import 'package:snapshorts_app/views/animations/three_dots_animation.dart';
 import 'package:snapshorts_app/views/widgets/custom_textfield.dart';
 import 'package:video_player/video_player.dart';
 
@@ -117,6 +118,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                       ),
                     ),
                   ),
+                  if (uploadVideoController.isLoadingVideo) const ThreeDots(),
                   const SizedBox(height: 20),
                 ],
               ),

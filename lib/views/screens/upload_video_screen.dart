@@ -102,26 +102,37 @@ class _UploadVideoScreenState extends State<UploadVideoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Add Video",
+          style: TextStyle(
+            fontSize: 18,
+            color: textColor,
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: buttonColor,
+      ),
       body: Center(
         child: InkWell(
           onTap: () {
             showOptionDialog(context);
           },
           child: Container(
-            height: 45,
-            width: 200,
+            height: 40,
+            width: 150,
             decoration: const BoxDecoration(
               color: buttonColor,
             ),
-            child: const Center(
-              child: Text(
-                "Add Video",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white70,
-                  fontWeight: FontWeight.w500,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
+                Icon(
+                  Icons.file_upload_outlined,
+                  color: textColor,
                 ),
-              ),
+              ],
             ),
           ),
         ),

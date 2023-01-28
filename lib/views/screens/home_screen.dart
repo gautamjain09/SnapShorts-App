@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:snapshorts_app/constants.dart';
+import 'package:snapshorts_app/views/screens/message_screen.dart';
 import 'package:snapshorts_app/views/screens/upload_video_screen.dart';
 import 'package:snapshorts_app/views/screens/profile_screen.dart';
 import 'package:snapshorts_app/views/screens/search_screen.dart';
@@ -18,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const VideoScreen(),
     SearchScreen(),
     const UploadVideoScreen(),
+    MessagingScreen(),
     ProfileScreen(uid: authController.user.uid),
   ];
 
@@ -55,6 +57,13 @@ class _HomeScreenState extends State<HomeScreen> {
             label: "Add Video",
             icon: Icon(
               Icons.add_box,
+              size: 28,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: "Message",
+            icon: Icon(
+              Icons.message_sharp,
               size: 28,
             ),
           ),

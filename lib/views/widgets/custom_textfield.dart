@@ -20,7 +20,7 @@ class CustomTextField extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         labelText: labelText,
-        labelStyle: const TextStyle(fontSize: 18),
+        labelStyle: const TextStyle(fontSize: 16),
         prefixIcon: Icon(prefixIcon),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),

@@ -33,7 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       }
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.black12,
+          backgroundColor: backgroundColor,
           leading: InkWell(
             onTap: (() {
               Get.to(
@@ -47,7 +47,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           actions: const [
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(5.0),
               child: Icon(Icons.more_horiz),
             ),
           ],
@@ -55,7 +55,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           title: Text(
             profileController.user['username'],
             style: const TextStyle(
-              fontSize: 22,
+              fontSize: 21,
               fontWeight: FontWeight.w500,
               color: Colors.white,
             ),
@@ -140,8 +140,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 5,
+                      const Divider(
+                        thickness: 2,
                       ),
                       GridView.builder(
                         gridDelegate:

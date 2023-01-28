@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:snapshorts_app/constants.dart';
 
 class CustomMusicAlbumViewer extends StatelessWidget {
   final String profilePhoto;
@@ -10,8 +11,8 @@ class CustomMusicAlbumViewer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 55,
-      height: 55,
+      width: 50,
+      height: 50,
       child: Column(
         children: [
           Container(
@@ -19,16 +20,16 @@ class CustomMusicAlbumViewer extends StatelessWidget {
             height: 50,
             width: 50,
             decoration: BoxDecoration(
-              gradient: const LinearGradient(
+              gradient: LinearGradient(
                 colors: [
-                  Colors.purple,
-                  Colors.white70,
+                  buttonColor,
+                  textColor,
                 ],
               ),
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(25),
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(25),
               child: Image(
                 image: NetworkImage(profilePhoto),
                 fit: BoxFit.cover,

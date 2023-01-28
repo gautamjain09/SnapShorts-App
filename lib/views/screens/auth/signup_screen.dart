@@ -135,7 +135,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     onTap: () {
                       Get.off(() => const LoginScreen());
                     },
-                    child: const Text(
+                    child: Text(
                       "Login",
                       style: TextStyle(
                         fontSize: 15,

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:snapshorts_app/constants.dart';
 import 'package:snapshorts_app/controllers/fetch_videos_controller.dart';
 import 'package:snapshorts_app/views/screens/comment_screen.dart';
+import 'package:snapshorts_app/views/screens/profile_screen.dart';
 import 'package:snapshorts_app/views/widgets/custom_circle_animation.dart';
 import 'package:snapshorts_app/views/widgets/custom_musicAlbum_viewer.dart';
 import 'package:snapshorts_app/views/widgets/custom_profile_viewer.dart';
@@ -23,7 +24,6 @@ class _VideoScreenState extends State<VideoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Obx(Get) in place of StreamBuilder
       body: Obx(
         () {
           return PageView.builder(
@@ -39,7 +39,7 @@ class _VideoScreenState extends State<VideoScreen> {
                   Column(
                     children: [
                       const SizedBox(
-                        height: 100,
+                        height: 120,
                       ),
                       Expanded(
                         child: Row(
@@ -91,13 +91,13 @@ class _VideoScreenState extends State<VideoScreen> {
                                           ),
                                         ),
                                       ],
-                                    )
+                                    ),
                                   ],
                                 ),
                               ),
                             ),
                             Container(
-                              width: 100,
+                              width: 80,
                               margin: EdgeInsets.only(
                                 top: MediaQuery.of(context).size.height / 3,
                                 left: 10,
@@ -106,8 +106,19 @@ class _VideoScreenState extends State<VideoScreen> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  CustomProfileViewer(
-                                    profilePhoto: data.profilePhoto,
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(builder: (context) {
+                                          return ProfileScreen(
+                                            uid: data.uid,
+                                          );
+                                        }),
+                                      );
+                                    },
+                                    child: CustomProfileViewer(
+                                      profilePhoto: data.profilePhoto,
+                                    ),
                                   ),
                                   Column(
                                     children: [
@@ -118,7 +129,7 @@ class _VideoScreenState extends State<VideoScreen> {
                                         },
                                         child: Icon(
                                           Icons.favorite,
-                                          size: 36,
+                                          size: 34,
                                           color: data.likes.contains(
                                             authController.user.uid,
                                           )
@@ -130,8 +141,8 @@ class _VideoScreenState extends State<VideoScreen> {
                                       Text(
                                         data.likes.length.toString(),
                                         style: const TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white70,
+                                          fontSize: 16,
+                                          color: textColor,
                                         ),
                                       )
                                     ],
@@ -148,7 +159,7 @@ class _VideoScreenState extends State<VideoScreen> {
                                         ),
                                         child: const Icon(
                                           Icons.comment,
-                                          size: 36,
+                                          size: 32,
                                           color: Colors.white70,
                                         ),
                                       ),
@@ -156,8 +167,8 @@ class _VideoScreenState extends State<VideoScreen> {
                                       Text(
                                         data.commentCount.toString(),
                                         style: const TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white70,
+                                          fontSize: 16,
+                                          color: textColor,
                                         ),
                                       )
                                     ],

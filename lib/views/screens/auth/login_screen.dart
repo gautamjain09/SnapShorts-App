@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onTap: () {
                       Get.off(() => const SignUpScreen());
                     },
-                    child: const Text(
+                    child: Text(
                       "Register",
                       style: TextStyle(
                         color: buttonColor,

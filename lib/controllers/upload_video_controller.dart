@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'dart:typed_data';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -9,6 +10,7 @@ import 'package:snapshorts_app/views/screens/video_screen.dart';
 import 'package:video_compress/video_compress.dart';
 
 class UploadVideoController extends GetxController {
+  bool isLoadingVideo = false;
   String uid = firebaseAuth.currentUser!.uid;
 
   // ------------------------ Compress Video ------------------------------>
@@ -60,6 +62,7 @@ class UploadVideoController extends GetxController {
   // ------------------------ uploadVideo to Firestore ------------------------------->
   uploadVideo(String songName, String caption, String videoPath) async {
     try {
+      isLoadingVideo = true;
       // Creating Unique ID for each Video
       QuerySnapshot allVideos = await firestore.collection("videos").get();
       int len = allVideos.docs.length;
@@ -96,13 +99,14 @@ class UploadVideoController extends GetxController {
           .doc("Video $len")
           .set(video.toJson())
           .then((value) {
+        isLoadingVideo = false;
         Get.snackbar(
           "Uploaded",
           "Video Uploaded Successfully",
         );
       });
 
-      Get.off(
+      Get.offAll(
         () => const VideoScreen(),
       );
     } on FirebaseException catch (e) {

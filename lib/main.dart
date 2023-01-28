@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       title: 'SnapShorts App',
       theme: ThemeData(
         brightness: Brightness.dark,
-        primarySwatch: Colors.purple,
+        primarySwatch: buttonColor,
         scaffoldBackgroundColor: backgroundColor,
       ),
       home: const LoginScreen(),

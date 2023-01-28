@@ -16,7 +16,7 @@ class SearchScreen extends StatelessWidget {
       () {
         return Scaffold(
           appBar: AppBar(
-            toolbarHeight: 90,
+            toolbarHeight: 70,
             backgroundColor: backgroundColor,
             title: Column(
               children: [
@@ -24,21 +24,21 @@ class SearchScreen extends StatelessWidget {
                   height: 55,
                   child: TextFormField(
                     decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.search, size: 22),
+                      prefixIcon: const Icon(Icons.search, size: 24),
                       filled: false,
-                      hintText: 'Search',
+                      hintText: 'Type username ',
                       hintStyle: const TextStyle(
-                        fontSize: 16.5,
+                        fontSize: 16,
                         color: textColor,
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(25),
                         borderSide: const BorderSide(
                           color: borderColor,
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(25),
                         borderSide: const BorderSide(
                           color: borderColor,
                         ),

@@ -5,8 +5,8 @@ import "package:flutter/material.dart";
 import 'package:snapshorts_app/controllers/auth_controller.dart';
 
 //<------------------- Colors -------------------->
-const buttonColor = Colors.purple;
-const backgroundColor = Colors.black;
+const buttonColor = Colors.indigo;
+const backgroundColor = Colors.black12;
 const borderColor = Colors.white70;
 const textColor = Colors.white70;
 
